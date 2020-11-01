@@ -1,0 +1,45 @@
+# Mybatis
+mybatis:
+  type-aliases-package: com.sinosofter.transfer.model
+  mapper-locations: classpath:mapping/*/*.xml
+# 日志配置
+logging:
+  level:
+    root: info
+    org.apache.ibatis: debug
+    cn.com.sinosoft.mh.mapper.mysql: debug
+    cn.com.sinosoft.mh.mapper.oracle: debug
+# 开发环境配置
+spring:
+  datasource:
+    mysql:
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbc-url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&autoReconnect=true&autoReconnectForPools=true&useSSL=false
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      hikari:
+        connection-timeout: 20000
+        minimum-idle: 5
+        maximum-pool-size: 50
+        idle-timeout: 30000
+        max-lifetime: 120000
+        auto-commit: true
+    oracle:
+      # 根据标识判定是否构建多数据源  若构建了多数据源即打开同步操作
+      enabled: true
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbc-url: jdbc:oracle:thin:@127.0.0.1:1521/orcl
+      username: C##CC
+      password: 111
+      driver-class-name: oracle.jdbc.OracleDriver
+      hikari:
+        connection-timeout: 20000
+        minimum-idle: 5
+        maximum-pool-size: 50
+        idle-timeout: 30000
+        max-lifetime: 120000
+        auto-commit: true
+# Server配置
+server:
+  port: 9080
